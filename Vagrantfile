@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
       echo "" > /home/vagrant/.kube/config
       chmod u+rw-x,g-rwx,o-rwx /home/vagrant/.kube/config
       chown vagrant /home/vagrant/.kube/config
-      /usr/local/bin/kind create cluster --config=/home/vagrant/kind/config.yaml
+      kind create cluster --config=/home/vagrant/kind/config.yaml --image kindest/node:v1.30.4
       kind get kubeconfig | tee /home/vagrant/.kube/config
       sudo snap install --classic helm --channel="latest/stable"
       echo "source <(kubectl completion bash)" | tee -a /home/vagrant/.bashrc
