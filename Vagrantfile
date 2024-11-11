@@ -38,16 +38,16 @@ Vagrant.configure("2") do |config|
       newgrp docker
       sudo adduser vagrant docker
       sudo apt-get install -y jq
-      curl -fsSLo /usr/local/bin/kubectl "https://cdn.dl.k8s.io/release/v1.30.4/bin/linux/amd64/kubectl"
+      curl -fsSLo /usr/local/bin/kubectl "https://cdn.dl.k8s.io/release/v1.31.2/bin/linux/amd64/kubectl"
       chmod -v +x /usr/local/bin/kubectl
-      curl -fsSLo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64
+      curl -fsSLo /usr/local/bin/kind https://kind.sigs.k8s.io/dl/v0.25.0/kind-linux-amd64
       chmod -v +x /usr/local/bin/kind
       mkdir -pv /home/vagrant/.kube/
       chown vagrant /home/vagrant/.kube/
       echo "" > /home/vagrant/.kube/config
       chmod u+rw-x,g-rwx,o-rwx /home/vagrant/.kube/config
       chown vagrant /home/vagrant/.kube/config
-      kind create cluster --config=/home/vagrant/kind/config.yaml --image kindest/node:v1.30.4
+      kind create cluster --config=/home/vagrant/kind/config.yaml --image kindest/node:v1.31.2
       kind get kubeconfig | tee /home/vagrant/.kube/config
       sudo snap install --classic helm --channel="latest/stable"
       echo "source <(kubectl completion bash)" | tee -a /home/vagrant/.bashrc
