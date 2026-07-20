@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "master1" do |master1|
-    master1.vm.box = "generic/debian12"
+    master1.vm.box = "generic/ubuntu2204"
     master1.vm.box_version = "4.3.12"
     master1.vm.hostname = "master1"
     master1.vm.network "private_network", ip: "172.29.1.101"
